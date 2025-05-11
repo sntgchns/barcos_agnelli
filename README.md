@@ -12,8 +12,10 @@ buscador-migrantes
 ├── static
 │   ├── css
 │   │   └── style.css     # Estilos CSS para la aplicación
-│   └── js
-│       └── script.js     # Código JavaScript para interacciones
+│   ├── js
+│   │   └── script.js     # Código JavaScript para interacciones
+│   └── json
+│       └── land.json.zip # Archivo comprimido con la base de datos
 ├── templates
 │   ├── index.html        # Plantilla para mostrar información de migrantes
 │   └── layout.html       # Plantilla base para la estructura de páginas
