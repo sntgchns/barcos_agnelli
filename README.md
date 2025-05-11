@@ -43,6 +43,8 @@ buscador-migrantes
    pip install -r requirements.txt
    ```
 
+4. Importa el json a la base de datos "agnelli" en la colección "migrantes" de mongoDB:
+
 ## Ejecución
 
 Para ejecutar la aplicación, utiliza el siguiente comando:
