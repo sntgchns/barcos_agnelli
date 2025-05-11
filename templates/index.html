@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="inter-container">
+        <div id="search-filters-container">
+            <div class="search-filter-row">
+                <select class="search-key">
+                    <option value="nombre">Nombre</option>
+                    <option value="apellido">Apellido</option>
+                    <option value="edad">Edad</option>
+                    <option value="sexo">Sexo</option>
+                    <option value="estado_civil">Estado Civil</option>
+                    <option value="profesion">Profesión</option>
+                    <option value="religion">Religión</option>
+                    <option value="puerto_de_salida">Puerto de Salida</option>
+                    <option value="nombre_del_barco">Nombre del Barco</option>
+                    <option value="fecha_de_arribo">Fecha de Arribo</option>
+                    <option value="leer_y_escribir">Leer y Escribir</option>
+                    <option value="clase">Clase</option>
+                    <option value="anio">Año</option>
+                </select>
+                <input type="text" class="search-term" placeholder="Escribe aquí...">
+            </div>
+        </div>
+    
+        <div class="action-buttons-container">
+            <button id="add-filter-button" type="button">+ Agregar Filtro</button>
+            <button id="search-button" type="button">Buscar</button>
+            <button id="reset-button" type="button">Limpiar</button>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Sexo</th>
+                <th>Estado Civil</th>
+                <th>Profesión</th>
+                <th>Religión</th>
+                <th>Puerto de Salida</th>
+                <th>Nombre del Barco</th>
+                <th>Fecha de Arribo</th>
+                <th>Leer y Escribir</th>
+                <th>Clase</th>
+                <th>Año</th>
+            </tr>
+        </thead>
+        <tbody id="migrantes-tbody">
+            {% if migrantes %}
+                {% for migrante in migrantes %}
+                    <tr>
+                        <td>{{ migrante.nombre }}</td>
+                        <td>{{ migrante.apellido }}</td>
+                        <td>{{ migrante.edad }}</td>
+                        <td>{{ migrante.sexo }}</td>
+                        <td>{{ migrante.estado_civil }}</td>
+                        <td>{{ migrante.profesion }}</td>
+                        <td>{{ migrante.religion }}</td>
+                        <td>{{ migrante.puerto_de_salida }}</td>
+                        <td>{{ migrante.nombre_del_barco }}</td>
+                        <td>{{ migrante.fecha_de_arribo }}</td>
+                        <td>{{ migrante.leer_y_escribir }}</td>
+                        <td>{{ migrante.clase }}</td>
+                        <td>{{ migrante.anio }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}
