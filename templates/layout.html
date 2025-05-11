@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Migrantes</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/ship.webp') }}" type="image/webp">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h2>Barcos de Agnelli</h2>
+        <!-- <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+            </ul>
+        </nav> -->
+    </header>
+    <main>
+        <div class="description">
+            <p>Bienvenido al buscador de migrantes. Aquí puedes buscar información sobre migrantes que llegaron a América en barcos de Agnelli.</p>
+            <p>Utiliza los filtros para encontrar la información que necesitas.</p>
+        </div>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2023 Buscador de Migrantes. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
