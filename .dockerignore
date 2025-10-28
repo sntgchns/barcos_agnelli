@@ -1,0 +1,12 @@
+__pycache__/
+venv/
+.kubernetes
+in/
+out/
+.git
+.gitignore
+.dockerignore
+convert_to_json.py
+convert_to_csv.py
+Dockerfile_k8s
+land.json

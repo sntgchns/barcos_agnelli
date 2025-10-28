@@ -1,0 +1,4 @@
+land.json
+venv/
+__pycache__/
+static/json/land.json.zip

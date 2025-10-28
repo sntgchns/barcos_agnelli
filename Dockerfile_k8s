@@ -1,0 +1,11 @@
+FROM python:3.13.6-alpine3.22
+LABEL name="Santiago Soñora" website="https://santiago.soñora.com"
+WORKDIR /app
+COPY requirements.txt /app/
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+COPY . /app/
+CMD ["gunicorn", "--bind", "0.0.0.0:15000", "--timeout", "0", "--max-requests", "1000", "--threads", "4", "app:app"]
+
+# docker build -t sntgchns/barcos-agnelli:k8s -f Dockerfile_k8s .
+# minikube image load sntgchns/barcos-agnelli:k8s

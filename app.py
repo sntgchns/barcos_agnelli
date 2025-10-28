@@ -1,12 +1,17 @@
 from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
+from pymongo.server_api import ServerApi
 import os
 
 app = Flask(__name__)
 
-MONGO_URI = os.environ.get('MONGO_URI', 'mongodb://localhost:27017/')
-client = MongoClient(MONGO_URI)
-db = client['agnelli']
+mongo_server = os.getenv('mongo_server')
+usuario = os.getenv('mongoDB_usuario')
+key = os.getenv('mongoDB_key')
+
+mongoDB_cluster = 'mongodb://{}:{}@{}/'.format(usuario, key, mongo_server)
+cluster = MongoClient(mongoDB_cluster, server_api=ServerApi('1'), tlsAllowInvalidCertificates=True)
+db = cluster.agnelli
 collection = db['migrantes']
 
 KEY_MAPPINGS = {

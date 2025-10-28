@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: barcos-agnelli-deployment
+  labels:
+    app: barcos-agnelli
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: barcos-agnelli
+  template:
+    metadata:
+      labels:
+        app: barcos-agnelli
+    spec:
+      containers:
+      - name: barcos-agnelli
+        image: santiagocast/barcos-agnelli:latest
+        imagePullPolicy: Never
+        resources:
+          requests:
+            memory: 60Mi
+            cpu: "20m"
+          limits:
+            memory: 80Mi
+            cpu: "50m"
+        ports:
+        - containerPort: 5001
+        env:
+        - name: MONGO_URI
+          valueFrom:
+            secretKeyRef:
+              name: mongo-uri
+              key: MONGO_URI
