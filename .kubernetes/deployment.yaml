@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: barcos-agnelli-deployment
+  labels:
+    apply: "true"
+    app: barcos-agnelli
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: barcos-agnelli
+  template:
+    metadata:
+      labels:
+        app: barcos-agnelli
+    spec:
+      containers:
+      - name: barcos-agnelli
+        image: sntgchns/barcos-agnelli:k8s
+        imagePullPolicy: Never
+        resources:
+          requests:
+            memory: 60Mi
+            cpu: "20m"
+          limits:
+            memory: 80Mi
+            cpu: "50m"
+        ports:
+        - containerPort: 15000
+        envFrom:
+        - configMapRef:
+            name: sntgchns-config
+        - secretRef:
+            name: sntgchns-secret

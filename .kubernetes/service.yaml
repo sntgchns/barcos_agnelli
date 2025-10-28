@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: barcos-agnelli-service
+spec:
+  selector:
+    app: barcos-agnelli
+  ports:
+    - protocol: TCP
+      port: 15000
+      targetPort: 15000
+  type: ClusterIP
