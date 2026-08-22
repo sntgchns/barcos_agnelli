@@ -8,6 +8,7 @@ metadata:
     app: barcos-agnelli
 spec:
   replicas: 1
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: barcos-agnelli
@@ -25,8 +26,8 @@ spec:
             memory: 60Mi
             cpu: "20m"
           limits:
-            memory: 80Mi
-            cpu: "50m"
+            memory: 120Mi
+            cpu: "100m"
         ports:
         - containerPort: 15000
         envFrom:
@@ -34,3 +35,19 @@ spec:
             name: sntgchns-config
         - secretRef:
             name: sntgchns-secret
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 15000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 15000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
